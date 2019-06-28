@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const Twit = require('twit')
 
+console.log('checking my env', process.env.TWITTER_ACCESS_TOKEN, ' and ', process.env.TWITTER_ACCESS_TOKEN_SECRET);
+
 const T = new Twit({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -71,8 +73,6 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; 
 }
-
-const fs = require('fs');
 
 module.exports = async function (context, req) {
     let stateAbbrs = Object.keys(states);
