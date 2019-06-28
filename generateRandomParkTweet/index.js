@@ -75,6 +75,8 @@ function getRandomIntInclusive(min, max) {
 }
 
 module.exports = async function (context, req) {
+    context.log('checking my env', process.env.TWITTER_ACCESS_TOKEN, ' and ', process.env.TWITTER_ACCESS_TOKEN_SECRET);
+
     let stateAbbrs = Object.keys(states);
     let chosenState = stateAbbrs[getRandomIntInclusive(0, stateAbbrs.length)];
 
