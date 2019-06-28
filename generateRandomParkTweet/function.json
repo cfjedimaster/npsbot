@@ -14,6 +14,12 @@
       "type": "http",
       "direction": "out",
       "name": "res"
+    },
+    {
+      "schedule": "0 * * * * *",
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in"
     }
   ]
 }
