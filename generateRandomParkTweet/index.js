@@ -78,6 +78,12 @@ function getRandomIntInclusive(min, max) {
 module.exports = async function (context, req) {
     context.log('checking my env', process.env.TWITTER_ACCESS_TOKEN, ' and ', process.env.TWITTER_ACCESS_TOKEN_SECRET);
 
+    // temporary test
+    context.res = {
+        body: `process env test ${process.env.TWITTER_ACCESS_TOKEN} and ${process.env.TWITTER_ACCESS_TOKEN_SECRET} now my consumer key ${process.env.TWITTER_CONSUMER_KEY} and secret ${process.env.TWITTER_CONSUMER_SECRET}`
+    };
+    context.done();
+
     const T = new Twit({
         consumer_key: process.env.TWITTER_CONSUMER_KEY,
         consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -87,11 +93,6 @@ module.exports = async function (context, req) {
         strictSSL: true,     // optional - requires SSL certificates to be valid.
     });
 
-    // temporary test
-    context.res = {
-        body: `process env test ${process.env.TWITTER_ACCESS_TOKEN} and ${process.env.TWITTER_ACCESS_TOKEN_SECRET}`
-    };
-    context.done();
 
     let stateAbbrs = Object.keys(states);
     let chosenState = stateAbbrs[getRandomIntInclusive(0, stateAbbrs.length)];
